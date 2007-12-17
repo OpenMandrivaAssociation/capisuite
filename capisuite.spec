@@ -22,7 +22,7 @@ Group:		Communications
 URL:		http://www.capisuite.de
 Source0:	http://www.capisuite.de/%{name}-%{version}.tar.bz2
 Source1:	capisuite-init.bz2
-PreReq:		rpm-helper
+Requires(post,preun):		rpm-helper
 BuildRequires:	autoconf2.5
 BuildRequires:	isdn4k-utils-devel
 BuildRequires:	libpython-devel
