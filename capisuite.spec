@@ -32,6 +32,7 @@ Requires:	ghostscript
 Requires:	libtiff-progs
 Requires:	sfftobmp
 Requires:	sox
+BuildRoot:    	%{_tmppath}/%{name}-%{version}
 
 %description
 CapiSuite is an ISDN telecommunication suite providing easy to use
