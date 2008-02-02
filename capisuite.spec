@@ -15,19 +15,19 @@
 
 Summary:	ISDN telecommunication suite providing fax and voice services
 Name:		capisuite
-License:	GPL
-Version: 0.4.5
-Release:  %mkrel 3
+License:	GPLv2+
+Version:	0.4.5
+Release:	%mkrel 4
 Group:		Communications
 URL:		http://www.capisuite.de
 Source0:	http://www.capisuite.de/%{name}-%{version}.tar.bz2
 Source1:	capisuite-init.bz2
 Requires(post,preun):		rpm-helper
-BuildRequires:	autoconf2.5
+BuildRequires:	autoconf
 BuildRequires:	isdn4k-utils-devel
 BuildRequires:	libpython-devel
 BuildRequires:	sfftobmp
-Requires:	MailTransportAgent
+Requires:	sendmail-command
 Requires:	ghostscript
 Requires:	libtiff-progs
 Requires:	sfftobmp
@@ -45,20 +45,15 @@ CapiSuite is distributed with two example scripts for call incoming handling
 and fax sending. See /usr/share/doc/capisuite for further information.
 
 %prep
-
 %setup -q
-
 bzcat %{SOURCE1} > capisuite-init
 
 %build
-
 %configure2_5x --localstatedir=%{_var}
-
 %make 
 
 %install
-rm -rf $RPM_BUILD_ROOT
-
+rm -rf %{buildroot}
 %makeinstall_std
 
 install -d %{buildroot}%{_initrddir}
@@ -70,7 +65,7 @@ install -m 755 capisuite.cron %{buildroot}/%{_sysconfdir}/cron.daily/capisuite
 mv %{buildroot}%{_docdir}/%{name} installed-docs
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %post
 %_post_service capisuite
