@@ -14,7 +14,10 @@ Group:		Communications
 URL:		http://www.capisuite.de
 Source0:	http://www.capisuite.de/%{name}-%{version}.tar.bz2
 Source1:	capisuite-init.bz2
+# Fix build with GCC 4.3 (explicit includes) - AdamW 2008/07
 Patch0:		capisuite-0.4.5-gcc43.patch
+# From Debian: fix build with Python 2.5 on x86-64 - AdamW 2008/07
+Patch1:		capisuite-0.4.5-python25.patch
 BuildRequires:	autoconf
 BuildRequires:	isdn4k-utils-devel
 BuildRequires:	libpython-devel
@@ -41,6 +44,7 @@ and fax sending. See /usr/share/doc/capisuite for further information.
 %setup -q
 bzcat %{SOURCE1} > capisuite-init
 %patch0 -p1 -b .gcc43
+%patch1 -p1 -b .py25
 
 %build
 %configure2_5x --localstatedir=%{_var}
