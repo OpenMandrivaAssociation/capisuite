@@ -44,7 +44,7 @@ and fax sending. See /usr/share/doc/capisuite for further information.
 %setup -q
 bzcat %{SOURCE1} > capisuite-init
 %patch0 -p1 -b .gcc43
-%patch1 -p1 -b .py25
+%patch1 -p0 -b .py25
 
 %build
 %configure2_5x --localstatedir=%{_var}
