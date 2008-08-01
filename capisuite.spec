@@ -1,28 +1,20 @@
-#
-# spec file for package capisuite 
-#
+# Original version of spec:
 # Copyright (c) 2003 Gernot Hillier <gernot@hillier.de>
 # Parts Copyright (c) SuSE Linux AG, Nuernberg, Germany.
-#
-# This file and all modifications and additions to the pristine
-# package are under the same license as the package itself.
-#
-# This spec file was developed for the use with SuSE Linux.  But it
-# should also work for any other distribution with slight changes.
-# If you created your own RPM, please tell me and I'll happily include
-# the spec or a link to your RPM on the homepage.
-#
+# License GPLv2+
+# Subsequent modifications by various Mandriva maintainers, same
+# license
 
 Summary:	ISDN telecommunication suite providing fax and voice services
 Name:		capisuite
 License:	GPLv2+
 Version:	0.4.5
-Release:	%mkrel 5
+Release:	%mkrel 4
 Group:		Communications
 URL:		http://www.capisuite.de
 Source0:	http://www.capisuite.de/%{name}-%{version}.tar.bz2
 Source1:	capisuite-init.bz2
-Requires(post,preun):		rpm-helper
+Patch0:		capisuite-0.4.5-gcc43.patch
 BuildRequires:	autoconf
 BuildRequires:	isdn4k-utils-devel
 BuildRequires:	libpython-devel
@@ -32,6 +24,7 @@ Requires:	ghostscript
 Requires:	libtiff-progs
 Requires:	sfftobmp
 Requires:	sox
+Requires(post,preun):		rpm-helper
 BuildRoot:    	%{_tmppath}/%{name}-%{version}
 
 %description
@@ -47,6 +40,7 @@ and fax sending. See /usr/share/doc/capisuite for further information.
 %prep
 %setup -q
 bzcat %{SOURCE1} > capisuite-init
+%patch0 -p1 -b .gcc43
 
 %build
 %configure2_5x --localstatedir=%{_var}
@@ -86,8 +80,8 @@ rm -rf %{buildroot}
 %{_bindir}/capisuitefax
 %{_libdir}/capisuite
 %{_datadir}/capisuite
-%{_var}/spool/capisuite
-%{_libdir}/python2.?/site-packages/cs_helpers.py
+%{_localstatedir}/spool/capisuite
+%{py_platsitedir}/cs_helpers.py
 %{_mandir}/man1/*
 %{_mandir}/man5/*
 %{_mandir}/man8/*
