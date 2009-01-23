@@ -18,6 +18,7 @@ Source1:	capisuite-init.bz2
 Patch0:		capisuite-0.4.5-gcc43.patch
 # From Debian: fix build with Python 2.5 on x86-64 - AdamW 2008/07
 Patch1:		capisuite-0.4.5-python25.patch
+Patch2:		capisuite-0.4.5-fix-build.patch
 BuildRequires:	autoconf
 BuildRequires:	isdn4k-utils-devel
 BuildRequires:	libpython-devel
@@ -45,6 +46,7 @@ and fax sending. See /usr/share/doc/capisuite for further information.
 bzcat %{SOURCE1} > capisuite-init
 %patch0 -p1 -b .gcc43
 %patch1 -p0 -b .py25
+%patch2 -p0 -b .fix
 
 %build
 %configure2_5x --localstatedir=%{_var}
