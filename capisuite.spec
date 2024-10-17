@@ -11,7 +11,7 @@ License:	GPLv2+
 Version:	0.4.5
 Release:	%mkrel 5
 Group:		Communications
-URL:		http://www.capisuite.de
+URL:		https://www.capisuite.de
 Source0:	http://www.capisuite.de/%{name}-%{version}.tar.bz2
 Source1:	capisuite-init.bz2
 # Fix build with GCC 4.3 (explicit includes) - AdamW 2008/07
