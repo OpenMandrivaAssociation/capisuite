@@ -19,6 +19,10 @@ Patch0:		capisuite-0.4.5-gcc43.patch
 # From Debian: fix build with Python 2.5 on x86-64 - AdamW 2008/07
 Patch1:		capisuite-0.4.5-python25.patch
 Patch2:		capisuite-0.4.5-fix-build.patch
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	autoconf
 BuildRequires:	isdn4k-utils-devel
 BuildRequires:	libpython-devel
