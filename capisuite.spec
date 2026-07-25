@@ -9,7 +9,7 @@ Summary:	ISDN telecommunication suite providing fax and voice services
 Name:		capisuite
 License:	GPLv2+
 Version:	0.4.5
-Release:	%mkrel 5
+Release:	6
 Group:		Communications
 URL:		https://www.capisuite.de
 Source0:	http://www.capisuite.de/%{name}-%{version}.tar.bz2
